@@ -44,7 +44,6 @@
     </properties>
 
 
-
     <modules>
         <module>messaging-presentation-spec</module>
         <module>messaging-persistence-spec</module>
