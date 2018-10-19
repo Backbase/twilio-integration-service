@@ -1,4 +1,4 @@
-# Twilio integration service demo for Backbase DBS Capability
+# Twilio integration service demo for Backbase DBS Service
 
 Installation
 ============
