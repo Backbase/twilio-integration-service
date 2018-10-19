@@ -1,0 +1,49 @@
+server:
+  port: 9921
+  contextPath: /twilio-integration-service
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.backbase: INFO
+    org.springframework: INFO
+
+spring:
+  activemq:
+    broker-url: ${activemq.url:tcp://localhost:61616}
+  jmx:
+    default-domain: ${spring.application.name}
+  jta:
+    logDir: target/${spring.application.name}-logs
+
+idempotencyConfiguration:
+  cacheName: ${spring.application.name}Cache
+
+backbase:
+  communication:
+    logRequests: true
+    logReplies: true
+  web:
+    security:
+      enabled: true
+
+sso:
+  jwt:
+    internal:
+      type: signed
+      signature:
+        algorithm: HS256
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY
+
+
+integration:
+  twilio:
+    # Update these values based on your Twilio account and set enabled to true
+    enabled: true
+    accountSid: ***REMOVED***
+    authToken: ***REMOVED***
+    fromNumber: ***REMOVED***
+

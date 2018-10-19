@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "SMS Request Response",
+  "type": "object",
+  "properties": {
+    "transactionID": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "transactionID",
+    "phoneNumber",
+    "otp"
+  ]
+}
