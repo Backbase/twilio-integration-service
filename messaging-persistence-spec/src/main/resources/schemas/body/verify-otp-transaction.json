@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Verify Transaction Request",
+  "type": "object",
+  "properties": {
+    "transactionID": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "transactionID",
+    "verified"
+  ]
+}

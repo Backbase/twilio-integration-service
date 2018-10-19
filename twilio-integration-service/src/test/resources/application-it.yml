@@ -1,0 +1,18 @@
+spring:
+  activemq:
+    broker-url: ${activemq.url:vm://localhost}
+    in-memory: true
+    pooled: false
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    com.backbase: INFO
+    org.springframework: INFO
+backbase:
+  communication:
+    logRequests: true
+    logReplies: true
+    logEventEmit: true
+    logEventReceive: true

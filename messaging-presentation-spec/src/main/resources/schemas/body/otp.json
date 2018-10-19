@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "One Time Password",
+  "type": "object",
+  "properties": {
+    "userID": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "transactionType": {
+      "type": "string"
+    },
+    "transactionValue": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "userID",
+    "phoneNumber",
+    "transactionType",
+    "transactionValue"
+  ]
+}

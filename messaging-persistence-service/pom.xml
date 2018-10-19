@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>backbase-persistence-starter-parent</artifactId>
+        <groupId>com.backbase.buildingblocks</groupId>
+        <version>6.0.1</version>
+    </parent>
+
+    <groupId>com.backbase.dbs.capabilities.extended</groupId>
+    <artifactId>messaging-persistence-service</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <service.version>0</service.version>
+        <skip.integration.tests>false</skip.integration.tests>
+    </properties>
+
+    <dependencies>
+        <!-- Bring in the dependencies for your command specifications -->
+        <!--<dependency>
+            <groupId>com.backbase.accounting</groupId>
+            <artifactId>accounting-persistence-command-spec</artifactId>
+            <version>[0,]</version>
+        </dependency>
+        -->
+
+        <dependency>
+            <groupId>com.backbase.dbs.capabilities.extended</groupId>
+            <artifactId>messaging-persistence-spec</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

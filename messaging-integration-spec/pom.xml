@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>backbase-spec-starter-parent</artifactId>
+        <groupId>com.backbase.buildingblocks</groupId>
+        <version>6.0.1</version>
+    </parent>
+
+    <groupId>com.backbase.dbs.capabilities.extended</groupId>
+    <artifactId>messaging-integration-spec</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Backbase :: Digital Banking Services :: messaging-integration-specification</name>
+
+    <properties>
+        <codegen.serviceName>integration.messaging</codegen.serviceName>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Uncomment this if your API is creating Commands and Events
+            <plugin>
+                <groupId>com.backbase.codegen</groupId>
+                <artifactId>jsonschema-events-maven-plugin</artifactId>
+            </plugin>
+             -->
+            <plugin>
+                <groupId>com.backbase.codegen</groupId>
+                <artifactId>raml-api-maven-plugin-1-0</artifactId>
+                <!-- These options change the default configuration managed in backbase-spec-starter-parent-->
+                <configuration>
+                    <inputFile>src/main/resources/api.raml</inputFile>
+                    <outputFile>target/generated-sources</outputFile>
+                    <packageName>${codegen.serviceName}</packageName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
