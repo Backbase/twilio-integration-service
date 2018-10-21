@@ -1,14 +1,40 @@
-# Twilio integration service demo for Backbase DBS Service
+# Twilio Integration Service for Backbase DBS Service
+
+
+Our primary goals are:
+
+
+![Image of Yaktocat](docs/img/messaging-diagram.png)
+
+
+## Components
+
+#### Messaging Presentation Service
+
+#### Messaging Persistence Service
+
+#### Twilio Persistence Service
 
 Installation
 ============
 
-*todo*
-Details on how to install.
+### Prerequisites
+
+The prerequisites
+
+ - JDK 8 or higher
+ - Apache ActimeMQ
+ - Apache Maven
 
 
-Quickstart
-==========
+###### Build
+```bash
+   mvn clean install
+```
+
+
+Getting Started
+============
 
 *todo*
 Getting started info.

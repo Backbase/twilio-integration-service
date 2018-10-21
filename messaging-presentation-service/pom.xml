@@ -8,11 +8,38 @@
         <version>6.0.1</version>
     </parent>
 
-    <groupId>com.backbase.dbs.capabilities.extended</groupId>
+    <groupId>com.backbase.dbs.capabilities.extended.messaging</groupId>
     <artifactId>messaging-presentation-service</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>Backbase :: Digital Banking Services :: messaging-presentation-service</name>
+    <name>Backbase :: Digital Banking Services :: Messaging Presentation Service</name>
+    <url>http://www.backbase.com</url>
+    <organization>
+        <name>Backbase B.V.</name>
+        <url>http://www.backbase.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name></name>
+            <url></url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>p4uloc4rdoso</id>
+            <name>Paulo Cardoso</name>
+            <email>pauloc@backbase.com</email>
+            <organization>Backbase B.V.</organization>
+            <organizationUrl>http://www.backbase.com</organizationUrl>
+            <roles>
+                <role>Software Engineer</role>
+            </roles>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/Backbase/twilio-integration-service</connection>
+        <url>https://github.com/Backbase/twilio-integration-service</url>
+    </scm>
 
     <properties>
         <skip.integration.tests>false</skip.integration.tests>
@@ -33,11 +60,10 @@
             <artifactId>messaging-persistence-spec</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!-- Bring in the dependencies for your presentation services, raml specifications -->
         <dependency>
-            <groupId>com.backbase.dbs.capabilities.extended</groupId>
+            <groupId>com.backbase.dbs.capabilities.extended.messaging</groupId>
             <artifactId>messaging-presentation-spec</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

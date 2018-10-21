@@ -11,20 +11,41 @@
     <groupId>com.backbase.dbs.capabilities.extended</groupId>
     <artifactId>messaging-integration-spec</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Backbase :: Digital Banking Services :: messaging-integration-specification</name>
+    <name>Backbase :: Digital Banking Services :: Messaging Integration Service</name>
+    <url>http://www.backbase.com</url>
+    <organization>
+        <name>Backbase B.V.</name>
+        <url>http://www.backbase.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name></name>
+            <url></url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>p4uloc4rdoso</id>
+            <name>Paulo Cardoso</name>
+            <email>pauloc@backbase.com</email>
+            <organization>Backbase B.V.</organization>
+            <organizationUrl>http://www.backbase.com</organizationUrl>
+            <roles>
+                <role>Software Engineer</role>
+            </roles>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/Backbase/twilio-integration-service</connection>
+        <url>https://github.com/Backbase/twilio-integration-service</url>
+    </scm>
 
     <properties>
-        <codegen.serviceName>integration.messaging</codegen.serviceName>
+        <codegen.serviceName>com.backbase.dbs.capabilities.extended.messaging.integration</codegen.serviceName>
     </properties>
 
     <build>
         <plugins>
-            <!-- Uncomment this if your API is creating Commands and Events
-            <plugin>
-                <groupId>com.backbase.codegen</groupId>
-                <artifactId>jsonschema-events-maven-plugin</artifactId>
-            </plugin>
-             -->
             <plugin>
                 <groupId>com.backbase.codegen</groupId>
                 <artifactId>raml-api-maven-plugin-1-0</artifactId>

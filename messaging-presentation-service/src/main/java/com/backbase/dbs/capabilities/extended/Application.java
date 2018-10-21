@@ -4,10 +4,7 @@ import com.backbase.buildingblocks.backend.configuration.autoconfigure.BackbaseA
 import com.backbase.buildingblocks.jwt.internal.config.EnableInternalJwtConsumer;
 import com.backbase.buildingblocks.registry.client.api.EnableRegistryClient;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 
 @BackbaseApplication
 @EnableInternalJwtConsumer

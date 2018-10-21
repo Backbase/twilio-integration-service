@@ -1,6 +1,6 @@
 server:
   port: 9921
-  contextPath: /otp-presentation-service
+  contextPath: /messaging-presentation-service
 
 # Logging
 logging:
@@ -20,7 +20,7 @@ eureka:
       role: live
   client:
     serviceUrl:
-      defaultZone: http://${REGISTRY_HOST:localhost}:${REGISTRY_PORT:8761}/registry/eureka/
+      defaultZone: http://${REGISTRY_HOST:localhost}:${REGISTRY_PORT:8080}/registry/eureka/
 
 spring:
   activemq:
