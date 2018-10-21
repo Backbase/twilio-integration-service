@@ -24,7 +24,7 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - createTable:
-        tableName: otp
+        tableName: messaging
         columns:
         - column:
             constraints:
@@ -44,7 +44,7 @@ databaseChangeLog:
             name: transaction_value
             type: INT(30)
         - column:
-            name: otp
+            name: messaging
             type: INT(5)
         - column:
             name: verified
@@ -64,7 +64,7 @@ databaseChangeLog:
     - addPrimaryKey:
         columnNames: id
         constraintName: pk_otp
-        tableName: otp
+        tableName: messaging
 - changeSet:
     id: add_fk_otp_ext
     author: Paulo Cardoso
@@ -78,14 +78,14 @@ databaseChangeLog:
         onDelete: NO ACTION
         onUpdate: NO ACTION
         referencedColumnNames: id
-        referencedTableName: otp
+        referencedTableName: messaging
 - changeSet:
     author: Paulo Cardoso
     id: data_otp
     changes:
       loadData: 
-        file: ${data.otp}
-        tableName: otp
+        file: ${data.messaging}
+        tableName: messaging
         columns:
         - column:
           name: id
@@ -98,7 +98,7 @@ databaseChangeLog:
         - column:
           name: transaction_value
         - column:
-          name: otp
+          name: messaging
         - column:
           name: verified
 - changeSet:

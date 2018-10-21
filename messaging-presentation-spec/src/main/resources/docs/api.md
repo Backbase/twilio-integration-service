@@ -1,7 +1,5 @@
-# otp-presentation-specification API Documentation
+# Messaging Presentation Specification API Documentation
 
-Currently the otp-presentation-specification API contains the following operations:
-* Create an item or Update an item
-* Get an item by ID
-* Get list of items, optionally filtering by name
-* Delete item
+Currently Messaging Presentation Specification contains the following operations:
+* One Time Password
+* verify OTP

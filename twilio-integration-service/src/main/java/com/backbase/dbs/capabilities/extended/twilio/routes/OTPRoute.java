@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class OTPRoute extends SimpleExtensibleRouteBuilder {
 
-    public static final String ROUTE_ID = "otp-route";
-    public static final String DIRECT_OTP_REQUEST = "direct:otp-request";
-    public static final String DIRECT_OTP_SEND_OTP_SMS = "direct:send-otp-sms";
+    public static final String ROUTE_ID = "messaging-route";
+    public static final String DIRECT_OTP_REQUEST = "direct:messaging-request";
+    public static final String DIRECT_OTP_SEND_OTP_SMS = "direct:send-messaging-sms";
 
     public OTPRoute() {
         super(ROUTE_ID, DIRECT_OTP_REQUEST, DIRECT_OTP_SEND_OTP_SMS);

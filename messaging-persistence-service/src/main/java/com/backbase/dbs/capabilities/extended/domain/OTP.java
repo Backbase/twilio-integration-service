@@ -14,14 +14,14 @@ import java.util.Map;
  *
  */
 @Entity
-@Table(name = "otp")
+@Table(name = "messaging")
 public class OTP implements AdditionalPropertiesAware, Persistable<String> {
     @Id
     @GeneratedValue(
-            generator = "otp-generator"
+            generator = "messaging-generator"
     )
     @GenericGenerator(
-            name = "otp-generator",
+            name = "messaging-generator",
             strategy = "com.backbase.dbs.capabilities.extended.domain.generator.CustomIdGenerator"
     )
     @Column(name = "id", unique = true)
@@ -39,7 +39,7 @@ public class OTP implements AdditionalPropertiesAware, Persistable<String> {
     @Column(name = "transaction_value")
     private Integer transactionValue;
 
-    @Column(name = "otp")
+    @Column(name = "messaging")
     private Integer otp;
 
     @Column(name = "verified")
