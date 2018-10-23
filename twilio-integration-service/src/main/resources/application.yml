@@ -41,8 +41,8 @@ sso:
 
 integration:
   twilio:
-    enabled: true
-    accountSid: ***REMOVED***
-    authToken: ***REMOVED***
-    fromNumber: ***REMOVED***
+    enabled:
+    accountSid:
+    authToken:
+    fromNumber:
 
