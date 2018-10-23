@@ -1,49 +1,51 @@
-# Twilio Integration Service for Backbase DBS Service
+# Twilio Integration Service demo for Backbase DBS Service
 
-
-## Capability Design
-![Image of Yaktocat](docs/img/messaging-diagram.png)
-
+This service enables you to setup a Twilio integration service to:
+ 
+- Send an OTP
+- Verify an OTP
+- Send an SMS
 
 ## Components
 
 #### Messaging Presentation Service
-Expose a REST resource with main important actions for messaging
+Exposes a REST resource with the following actions for messaging
 
-- Send OTP
-- Verify OTP
-- Send SMS
+- Sending an OTP
+- Verifing an OTP
+- Sending an SMS
     
 #### Messaging Persistence Service
- Component Persiste OTP Status. Based in Spring JPA, it can be used  
- following supported databases:
+ Persists the OTP status. Based on Spring JPA, it can be used  
+ with the following supported databases:
  
  - Oracle
  - MySQL
 
 > Check configuration TOPIC for more details
  
-
 #### Twilio Integration Service
 
-Component responsible for the actual integration with Twilio API.
+Component that makes the actual integration with Twilio API.
  
 > Check configuration TOPIC for more details
+
+#### Components overview
+
+![Image of Yaktocat](docs/img/messaging-diagram.png)
 
 Installation
 ============
 
 ### Prerequisites
 
-The prerequisites
-
  - JDK 8 or higher
- - Apache ActimeMQ
+ - Apache ActiveMQ
  - Apache Maven
 
 ### Configure
 
-The following properties have to be setted, and obtained from your Twilio account.
+The following properties have to be set, and obtained from your Twilio account.
 
 ```yaml
 integration:
@@ -53,7 +55,7 @@ integration:
     fromNumber: 
 ```
 
-It's possible to set them as enviroment properties.
+These properties can be set as environment properties.
 
 ```bash
 java jar -Dintegration.twilio.accountSid=123as \
@@ -75,8 +77,8 @@ Getting Started
 
 ### Required Environment Properties
 
-  - EXTERNAL_ENC_SECRET_KEY: Key for encripting external token
-  - EXTERNAL_SIG_SECRET_KEY: Key for siging external token
+  - EXTERNAL_ENC_SECRET_KEY: Key for encrypting the external token
+  - EXTERNAL_SIG_SECRET_KEY: Key for signing the external token
   
   - SPRING_ACTIVEMQ_BROKER_URL: url of the apache MQ
   - SPRING_ACTIVEMQ_USER: user of apache MQ
@@ -90,7 +92,7 @@ To run the service in development mode, use:
 To run the service from the built binaries, use:
 - java -jar target/twilio-integration-service-1.0.0-SNAPSHOT-boot.war
 
-the bynaries can run in web containers such as:
+the binaries can run in web containers such as:
    - Apache Tomcat 8 (Tested)
    - IBM Liberty Profile (Not Tested yet)
    - Wildfly
@@ -99,7 +101,7 @@ Next Steps
 ==========
 
  - Get familiar with Backbase DBS architecture
- - Check Backbase Forums and Comunity (http://commty.backbase.copm)
+ - Check Backbase Forums and Community (http://community.backbase.com)
 
 License
 =======
