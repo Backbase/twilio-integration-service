@@ -1,6 +1,6 @@
 package com.backbase.dbs.capabilities.extended.messaging.service;
 
-public interface OneTimePasswordService {
+public interface OneTimePasswordStrategyService {
 
     Integer generateOpt();
 }

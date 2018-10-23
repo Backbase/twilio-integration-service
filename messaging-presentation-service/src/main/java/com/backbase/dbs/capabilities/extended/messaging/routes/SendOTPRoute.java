@@ -4,12 +4,12 @@ import com.backbase.buildingblocks.backend.communication.extension.SimpleExtensi
 import org.springframework.stereotype.Component;
 
 
-
 /**
  * Send OTP Route responsible for provide channels for sending OTP
+ *
  * @author Paulo Cardoso
- * @since 1.0.0
  * @see com.backbase.buildingblocks.backend.communication.extension.SimpleExtensibleRouteBuilder
+ * @since 1.0.0
  */
 @Component
 public class SendOTPRoute extends SimpleExtensibleRouteBuilder {

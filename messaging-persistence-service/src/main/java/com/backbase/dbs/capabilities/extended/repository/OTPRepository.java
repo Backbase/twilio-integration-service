@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Extends the JpaRepository class to add custom find methods
- *
  */
 @Repository
 public interface OTPRepository extends JpaRepository<OTP, String> {
     /**
      * Find an OTP by id
+     *
      * @param id OTP id
      * @return OTP
      */

@@ -5,9 +5,6 @@
   "properties": {
     "smsSent": {
       "type": "boolean"
-    },
-    "otp" : {
-      "type" : "integer"
     }
   }
 }

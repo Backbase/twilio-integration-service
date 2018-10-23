@@ -13,8 +13,8 @@ public class CustomIdGenerator extends UUIDHexGenerator {
     }
 
     public Serializable generate(SessionImplementor session, Object object) throws HibernateException {
-        Persistable entity = (Persistable)object;
+        Persistable entity = (Persistable) object;
         String customId = (String) entity.getId();
-        return (Serializable)(StringUtils.isNotBlank(customId) ? customId : super.generate(session, object));
+        return (Serializable) (StringUtils.isNotBlank(customId) ? customId : super.generate(session, object));
     }
 }

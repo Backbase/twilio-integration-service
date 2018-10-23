@@ -41,7 +41,6 @@ sso:
 
 integration:
   twilio:
-    # Update these values based on your Twilio account and set enabled to true
     enabled: true
     accountSid: ***REMOVED***
     authToken: ***REMOVED***
