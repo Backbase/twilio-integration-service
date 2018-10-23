@@ -20,7 +20,7 @@ public class TwilioService implements InitializingBean {
         this.twilioConfigurationProperties = twilioConfigurationProperties;
     }
 
-    public Message sendSMS(String content, String phoneNumber){
+    public Message sendSMS(String content, String phoneNumber) {
         LOGGER.info("Sending SMS to: {}", phoneNumber);
         return Message.create(twilioConfigurationProperties.getAccountSid(),
                 new PhoneNumber(phoneNumber),
@@ -29,6 +29,7 @@ public class TwilioService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
+        LOGGER.info("Initializing Twilio");
         Twilio.init(twilioConfigurationProperties.getAccountSid(), twilioConfigurationProperties.getAuthToken());
     }
 }

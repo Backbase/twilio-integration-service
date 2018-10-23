@@ -11,7 +11,6 @@ import java.util.Map;
 /**
  * An example entity implementing {@link com.backbase.buildingblocks.persistence.model.AdditionalPropertiesAware} for API extensions and an analyzed field 'name' for Hibernate Search.
  * Keep identifiers below 30 characters for use with older Oracle Database versions, or 128 bytes if using Oracle 12c Release 2 and later.
- *
  */
 @Entity
 @Table(name = "messaging")
@@ -56,13 +55,13 @@ public class OTP implements AdditionalPropertiesAware, Persistable<String> {
         return id;
     }
 
+    public void setId(String uuid) {
+        this.id = uuid;
+    }
+
     @Override
     public boolean isNew() {
         return id == null;
-    }
-
-    public void setId(String uuid) {
-        this.id = uuid;
     }
 
     public String getUserId() {

@@ -10,10 +10,27 @@ Our primary goals are:
 ## Components
 
 #### Messaging Presentation Service
+Expose a REST resource with main important actions for messaging
 
+- Send OTP
+- Verify OTP
+- Send SMS
+    
 #### Messaging Persistence Service
+ Component Persiste OTP Status. Based in Spring JPA, it can be used  
+ following supported databases:
+ 
+ - Oracle
+ - MySQL
 
-#### Twilio Persistence Service
+> Check configuration TOPIC for more details
+ 
+
+#### Twilio Integration Service
+
+Component responsible for the actual integration with Twilio API.
+ 
+> Check configuration TOPIC for more details
 
 Installation
 ============
@@ -26,12 +43,35 @@ The prerequisites
  - Apache ActimeMQ
  - Apache Maven
 
+### Configure
 
-###### Build
-```bash
-   mvn clean install
+The following properties have to be setted, and obtained from your Twilio account.
+
+```yaml
+integration:
+  twilio:
+    accountSid: 
+    authToken: 
+    fromNumber: 
 ```
 
+It's possible to set them as enviroment properties.
+
+```bash
+java jar -Dintegration.twilio.accountSid=123as \
+    -Dintegration.twilio.authToken=13123 \
+    -Dintegration.twilio.fromNumber=+319830890 \ 
+    twilio-integration-service-1.0.0-boot.war
+```
+
+
+###Build
+
+
+```bash 
+   mvn clean install
+```
+ > This command is going to build all the artifacts and install locally (war and war-boot files).
 
 Getting Started
 ============
@@ -42,7 +82,8 @@ Getting started info.
 Next Steps
 ==========
 
-*todo*
+ - Get Familiar with Backbase DBS architecture
+ - Check Backbase Forums and Comunity (http://commty.§backbase.copm)
 
 License
 =======
