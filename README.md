@@ -1,9 +1,7 @@
 # Twilio Integration Service for Backbase DBS Service
 
 
-Our primary goals are:
-
-
+## Capability Design
 ![Image of Yaktocat](docs/img/messaging-diagram.png)
 
 
@@ -65,8 +63,7 @@ java jar -Dintegration.twilio.accountSid=123as \
 ```
 
 
-###Build
-
+### Build
 
 ```bash 
    mvn clean install
@@ -76,14 +73,33 @@ java jar -Dintegration.twilio.accountSid=123as \
 Getting Started
 ============
 
-*todo*
-Getting started info.
+### Required Environment Properties
+
+  - EXTERNAL_ENC_SECRET_KEY: Key for encripting external token
+  - EXTERNAL_SIG_SECRET_KEY: Key for siging external token
+  
+  - SPRING_ACTIVEMQ_BROKER_URL: url of the apache MQ
+  - SPRING_ACTIVEMQ_USER: user of apache MQ
+  - SPRING_ACTIVEMQ_PASSWORD: password of apache MQ
+
+> some properties can be updated inside of src/main/resources/application.yml
+
+To run the service in development mode, use:
+- mvn spring-boot:run
+
+To run the service from the built binaries, use:
+- java -jar target/twilio-integration-service-1.0.0-SNAPSHOT-boot.war
+
+the bynaries can run in web containers such as:
+   - Apache Tomcat 8 (Tested)
+   - IBM Liberty Profile (Not Tested yet)
+   - Wildfly
 
 Next Steps
 ==========
 
- - Get Familiar with Backbase DBS architecture
- - Check Backbase Forums and Comunity (http://commty.§backbase.copm)
+ - Get familiar with Backbase DBS architecture
+ - Check Backbase Forums and Comunity (http://commty.backbase.copm)
 
 License
 =======
