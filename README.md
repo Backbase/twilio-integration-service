@@ -27,8 +27,8 @@ Installation
 
 ### Prerequisites
 
- - JDK 8 or higher
- - Apache ActiveMQ
+ - JDK 1.8 (PSU >= 131 if using Docker)
+ - Apache ActiveMQ 5.14
  - Apache Maven
  
  > Check community for more details: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_developer_environment
