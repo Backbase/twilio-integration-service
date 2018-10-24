@@ -102,9 +102,9 @@ Getting Started
 
 ### Required Environment Properties
 
-  - EXTERNAL_ENC_SECRET_KEY: Key for encrypting the external token
-  - EXTERNAL_SIG_SECRET_KEY: Key for signing the external token
-  
+  - EXTERNAL_ENC_SECRET_KEY: Key for encrypting the external token (The secret length must be at least 256 bits)
+  - EXTERNAL_SIG_SECRET_KEY: Key for signing the external token (The secret length must be at least 256 bits)
+  - SIG_SECRET_KEY: Key for signing internal token (The secret length must be at least 256 bits)
   - SPRING_ACTIVEMQ_BROKER_URL: url of the apache MQ
   - SPRING_ACTIVEMQ_USER: user of apache MQ
   - SPRING_ACTIVEMQ_PASSWORD: password of apache MQ

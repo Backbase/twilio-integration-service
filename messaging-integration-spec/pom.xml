@@ -11,7 +11,7 @@
     <groupId>com.backbase.dbs.capabilities.extended</groupId>
     <artifactId>messaging-integration-spec</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Backbase :: Digital Banking Services :: Messaging Integration Service</name>
+    <name>Backbase :: Digital Banking Services :: Messaging Integration Spec</name>
     <url>http://www.backbase.com</url>
     <organization>
         <name>Backbase B.V.</name>
@@ -19,13 +19,13 @@
     </organization>
     <licenses>
         <license>
-            <name></name>
-            <url></url>
+            <name>Copyright (c) 2018 Backbase B.V.</name>
+            <url>https://github.com/Backbase/twilio-integration-service/blob/master/LICENSE</url>
         </license>
     </licenses>
     <developers>
         <developer>
-            <id>p4uloc4rdoso</id>
+            <id>paulocardoso</id>
             <name>Paulo Cardoso</name>
             <email>pauloc@backbase.com</email>
             <organization>Backbase B.V.</organization>
