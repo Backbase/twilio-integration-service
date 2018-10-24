@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -21,18 +20,32 @@
 
     <dependencies>
         <!-- Bring in the dependencies for your command specifications -->
-        <!--<dependency>
-            <groupId>com.backbase.accounting</groupId>
-            <artifactId>accounting-persistence-command-spec</artifactId>
-            <version>[0,]</version>
-        </dependency>
-        -->
-
         <dependency>
             <groupId>com.backbase.dbs.capabilities.extended</groupId>
             <artifactId>messaging-persistence-spec</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>h2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>spring.profiles.active</name>
+                    <value>h2</value>
+                </property>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>1.4.197</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 </project>

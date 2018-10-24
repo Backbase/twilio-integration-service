@@ -8,12 +8,6 @@
     },
     "phoneNumber": {
       "type": "string"
-    },
-    "transactionType": {
-      "type": "string"
-    },
-    "transactionValue": {
-      "type": "integer"
     }
   },
   "required": [

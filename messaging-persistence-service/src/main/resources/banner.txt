@@ -7,3 +7,5 @@
     \|_______|\|__|\|__|\|_______|\|__| \|__|\|_______|\|__|\|__|\_________\|_______|
                                                                 \|_________|
 
+Spring Boot Version: ${spring-boot.version}
+Application version: ${application.version}

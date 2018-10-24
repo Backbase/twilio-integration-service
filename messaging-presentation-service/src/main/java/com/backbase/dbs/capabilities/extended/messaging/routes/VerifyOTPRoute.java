@@ -17,7 +17,7 @@ public class VerifyOTPRoute extends SimpleExtensibleRouteBuilder {
     public static final String ROUTE_ID = "VerifyOTPRoute";
 
     public VerifyOTPRoute() {
-        super(ROUTE_ID, MessaginConstants.DIRECT_BUSINESS_REQUEST_OTP, MessaginConstants.DIRECT_REQUEST_OTP);
+        super(ROUTE_ID, MessaginConstants.DIRECT_VERIFY_OTP, MessaginConstants.DIRECT_BUSINESS_VERIFY_OTP);
     }
 
 }

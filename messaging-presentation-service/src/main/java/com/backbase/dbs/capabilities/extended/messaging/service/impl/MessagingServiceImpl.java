@@ -4,8 +4,8 @@ import com.backbase.buildingblocks.backend.communication.event.proxy.RequestProx
 import com.backbase.buildingblocks.backend.internalrequest.InternalRequest;
 import com.backbase.buildingblocks.logging.api.Logger;
 import com.backbase.buildingblocks.logging.api.LoggerFactory;
-import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.one_time_password.OneTimePasswordPostRequestBody;
-import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.one_time_password.OneTimePasswordPostResponseBody;
+import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordPostRequestBody;
+import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordPostResponseBody;
 import com.backbase.dbs.capabilities.extended.messaging.routes.MessaginConstants;
 import com.backbase.dbs.capabilities.extended.messaging.service.MessagingService;
 import com.backbase.dbs.capabilities.extended.messaging.service.OneTimePasswordStrategyService;
@@ -48,13 +48,13 @@ public class MessagingServiceImpl implements MessagingService {
      * @consume direct:request.messaging.otp
      */
     @Override
-    @Consume(uri = MessaginConstants.DIRECT_REQUEST_OTP)
+    @Consume(uri = MessaginConstants.DIRECT_BUSINESS_REQUEST_OTP)
     public OneTimePasswordPostResponseBody requestOneTimePassword(InternalRequest<OneTimePasswordPostRequestBody> internalRequest) {
         LOGGER.info("Requesting OTP for Internal Request: {}", internalRequest);
         int otp = oneTimePasswordStrategyService.generateOpt();
         String transactionID = persistNewRequest(internalRequest, otp);
 
-        RequestProxyWrapper<SendSMSPostResponseBody> otpRequestPostResponseBody = callIntegrationServiceToSendSms(internalRequest, "");
+        RequestProxyWrapper<SendSMSPostResponseBody> otpRequestPostResponseBody = callIntegrationServiceToSendSms(internalRequest, "otp");
         Boolean smsSent = otpRequestPostResponseBody.getRequest().getData().getSmsSent();
         LOGGER.info("Successfully requested new OTP {} with Transaction ID: {}", otp, transactionID);
         return new OneTimePasswordPostResponseBody().withTransactionID(transactionID).withOtp(otp)

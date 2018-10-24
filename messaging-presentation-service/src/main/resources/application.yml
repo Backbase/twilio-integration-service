@@ -1,5 +1,5 @@
 server:
-  port: 9921
+  port: 9929
   contextPath: /messaging-presentation-service
 
 # Logging

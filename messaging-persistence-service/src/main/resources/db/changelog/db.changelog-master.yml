@@ -4,12 +4,12 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - createTable:
-        tableName: ext_otp
+        tableName: ext_messaging
         columns:
         - column:
             constraints:
               nullable: false
-            name: ext_otp_id
+            name: ext_messaging_id
             type: VARCHAR(255)
         - column:
             name: property_value
@@ -54,25 +54,25 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - addPrimaryKey:
-        columnNames: ext_otp_id, property_key
-        constraintName: pk_ext_otp
-        tableName: ext_otp
+        columnNames: ext_messaging_id, property_key
+        constraintName: pk_ext_messaging
+        tableName: ext_messaging
 - changeSet:
-    id: pk_key_otp
+    id: pk_key_messaging
     author: Paulo Cardoso
     changes:
     - addPrimaryKey:
         columnNames: id
-        constraintName: pk_otp
+        constraintName: pk_messaging
         tableName: messaging
 - changeSet:
-    id: add_fk_otp_ext
+    id: add_fk_messaging_ext
     author: Paulo Cardoso
     changes:
     - addForeignKeyConstraint:
-        baseColumnNames: ext_otp_id
-        baseTableName: ext_otp
-        constraintName: fk_otp_ext
+        baseColumnNames: ext_messaging_id
+        baseTableName: ext_messaging
+        constraintName: fk_messaging_ext
         deferrable: false
         initiallyDeferred: false
         onDelete: NO ACTION
@@ -81,7 +81,7 @@ databaseChangeLog:
         referencedTableName: messaging
 - changeSet:
     author: Paulo Cardoso
-    id: data_otp
+    id: data_messaging
     changes:
       loadData: 
         file: ${data.messaging}
@@ -103,14 +103,14 @@ databaseChangeLog:
           name: verified
 - changeSet:
     author: Paulo Cardoso
-    id: data_ext_otp
+    id: data_ext_messaging
     changes:
       loadData: 
-        file: ${data.ext_otp}
-        tableName: ext_otp
+        file: ${data.ext_messaging}
+        tableName: ext_messaging
         columns:
           - column:
-              name: ext_otp_id
+              name: ext_messaging_id
           - column:
               name: property_value
           - column:
