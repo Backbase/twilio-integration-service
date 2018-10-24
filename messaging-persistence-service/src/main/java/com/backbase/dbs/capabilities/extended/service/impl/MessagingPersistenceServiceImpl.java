@@ -2,22 +2,24 @@ package com.backbase.dbs.capabilities.extended.service.impl;
 
 import com.backbase.dbs.capabilities.extended.domain.OTP;
 import com.backbase.dbs.capabilities.extended.repository.OTPRepository;
-import com.backbase.dbs.capabilities.extended.service.OTPPersistenceService;
+import com.backbase.dbs.capabilities.extended.service.MessagingPersistenceService;
 import com.backbase.persistence.messaging.rest.spec.v1.transactions.OTPTransactionsPostRequestBody;
 import com.backbase.persistence.messaging.rest.spec.v1.transactions.VerifyTransactionPostRequestBody;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public abstract class OTPPersistenceServiceImpl implements OTPPersistenceService {
+@Component
+public class MessagingPersistenceServiceImpl implements MessagingPersistenceService {
 
     private final OTPRepository otpRepository;
-    private final ModelMapper modelMapper = new ModelMapper();
+
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public OTPPersistenceServiceImpl(OTPRepository otpRepository) {
-        this.otpRepository = otpRepository;
+    public MessagingPersistenceServiceImpl(OTPRepository otpRepository, ModelMapper modelMapper ){
+        this.otpRepository =  otpRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.backbase.buildingblocks.backend.internalrequest.InternalRequest;
 import com.backbase.buildingblocks.logging.api.Logger;
 import com.backbase.buildingblocks.logging.api.LoggerFactory;
 import com.backbase.buildingblocks.presentation.errors.InternalServerErrorException;
-import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.one_time_password.*;
+import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.*;
 import com.backbase.dbs.capabilities.extended.messaging.routes.MessaginConstants;
 import com.backbase.dbs.capabilities.extended.messaging.routes.SendOTPRouteProxy;
 import com.backbase.dbs.capabilities.extended.messaging.routes.VerifyOTPRouteProxy;
@@ -34,7 +34,7 @@ public class MessagingController implements OneTimePasswordApi {
     @Autowired
     private IDUtils idUtils;
 
-    @Produce(uri = MessaginConstants.DIRECT_BUSINESS_REQUEST_OTP)
+    @Produce(uri = MessaginConstants.DIRECT_REQUEST_OTP)
     private SendOTPRouteProxy sendOTPRouteProxy;
 
     @Produce(uri = MessaginConstants.DIRECT_VERIFY_OTP)

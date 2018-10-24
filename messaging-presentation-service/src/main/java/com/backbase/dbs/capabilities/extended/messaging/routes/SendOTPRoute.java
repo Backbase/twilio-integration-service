@@ -17,7 +17,7 @@ public class SendOTPRoute extends SimpleExtensibleRouteBuilder {
     public static final String ROUTE_ID = "SendOTPRoute";
 
     public SendOTPRoute() {
-        super(ROUTE_ID, MessaginConstants.DIRECT_BUSINESS_REQUEST_OTP, MessaginConstants.DIRECT_REQUEST_OTP);
+        super(ROUTE_ID, MessaginConstants.DIRECT_REQUEST_OTP, MessaginConstants.DIRECT_BUSINESS_REQUEST_OTP);
     }
 
 }

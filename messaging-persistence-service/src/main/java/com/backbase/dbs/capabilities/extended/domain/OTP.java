@@ -21,7 +21,7 @@ public class OTP implements AdditionalPropertiesAware, Persistable<String> {
     )
     @GenericGenerator(
             name = "messaging-generator",
-            strategy = "com.backbase.dbs.capabilities.extended.domain.generator.CustomIdGenerator"
+            strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "id", unique = true)
     private String id;

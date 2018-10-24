@@ -21,7 +21,7 @@ Exposes a REST resource with the following actions for messaging
  
  - Oracle
  - MySQL
-
+ 
 > Check configuration TOPIC for more details
  
 #### Twilio Integration Service
@@ -63,6 +63,31 @@ java jar -Dintegration.twilio.accountSid=123as \
     -Dintegration.twilio.fromNumber=+319830890 \ 
     twilio-integration-service-1.0.0-boot.war
 ```
+
+By default the service comes with h2 predefined, in case you want to replace for another database you can follow the steps below:
+   - add the dependency to the `pom.xml`:
+    
+    ```
+     <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.197</version>
+    </dependency>
+    ```
+
+   - Update the database properties:
+   
+```bash
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/messaging_service?useSSL=false
+    platform: mysql
+    username: root
+    password: root
+    continue-on-error: true
+```
+ 
 
 
 ### Build

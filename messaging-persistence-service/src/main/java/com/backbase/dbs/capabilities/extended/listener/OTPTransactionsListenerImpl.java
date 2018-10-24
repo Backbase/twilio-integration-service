@@ -6,11 +6,12 @@ import com.backbase.buildingblocks.backend.internalrequest.InternalRequest;
 import com.backbase.buildingblocks.logging.api.Logger;
 import com.backbase.buildingblocks.logging.api.LoggerFactory;
 import com.backbase.dbs.capabilities.extended.domain.OTP;
-import com.backbase.dbs.capabilities.extended.service.OTPPersistenceService;
+import com.backbase.dbs.capabilities.extended.service.impl.MessagingPersistenceServiceImpl;
 import com.backbase.persistence.messaging.listener.spec.v1.transactions.OTPTransactionsListener;
 import com.backbase.persistence.messaging.rest.spec.v1.transactions.*;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.script.Groovy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -20,10 +21,11 @@ public class OTPTransactionsListenerImpl implements OTPTransactionsListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OTPTransactionsListenerImpl.class);
 
-    private final OTPPersistenceService otpPersistenceService;
+    private MessagingPersistenceServiceImpl messagingPersistenceServiceImpl;
 
-    public OTPTransactionsListenerImpl(OTPPersistenceService otpPersistenceService) {
-        this.otpPersistenceService = otpPersistenceService;
+    @Autowired
+    public OTPTransactionsListenerImpl(MessagingPersistenceServiceImpl messagingPersistenceServiceImpl) {
+        this.messagingPersistenceServiceImpl = messagingPersistenceServiceImpl;
     }
 
     @Override
@@ -31,14 +33,14 @@ public class OTPTransactionsListenerImpl implements OTPTransactionsListener {
             RequestProxyWrapper<OTPTransactionsPostRequestBody> transactionsPostRequestBody,
             Exchange exchange) {
         LOGGER.info("Call to persist new OPT Request: {}", transactionsPostRequestBody);
-        String transactionID = otpPersistenceService.saveNewOneTimePasswordRequest(transactionsPostRequestBody.getRequest().getData());
+        String transactionID = messagingPersistenceServiceImpl.saveNewOneTimePasswordRequest(transactionsPostRequestBody.getRequest().getData());
         OTPTransactionsPostResponseBody transactionPostResponseBody = new OTPTransactionsPostResponseBody().withTransactionID(transactionID);
         return buildRequestProxyWrapper(transactionPostResponseBody, "POST");
     }
 
     @Override
     public RequestProxyWrapper<TransactionGetResponseBody> getTransaction(RequestProxyWrapper<Void> request, Exchange exchange, @Groovy("assert request.body.pathParams[\"transactionId\"]||request.body.pathParams[\"transactionId\"]==0; request.body.pathParams[\"transactionId\"]") String transactionId) {
-        OTP oneTimePasswordRequest = otpPersistenceService.fetchOneTimePasswordRequest(transactionId);
+        OTP oneTimePasswordRequest = messagingPersistenceServiceImpl.fetchOneTimePasswordRequest(transactionId);
         TransactionGetResponseBody transactionGetResponseBody = new TransactionGetResponseBody()
                 .withTransactionId(oneTimePasswordRequest.getId())
                 .withTransactionType(oneTimePasswordRequest.getTransactionType())
@@ -55,7 +57,7 @@ public class OTPTransactionsListenerImpl implements OTPTransactionsListener {
             RequestProxyWrapper<VerifyTransactionPostRequestBody> verifyTransactionPostRequestBody,
             Exchange exchange) {
         LOGGER.info("Call to update OPT Request verification status: {}", verifyTransactionPostRequestBody);
-        String transactionID = otpPersistenceService.updateOneTimePasswordRequestVerificationStatus(
+        String transactionID = messagingPersistenceServiceImpl.updateOneTimePasswordRequestVerificationStatus(
                 verifyTransactionPostRequestBody.getRequest().getData());
         VerifyTransactionPostResponseBody verifyTransactionPostResponseBody = new VerifyTransactionPostResponseBody().withTransactionID(transactionID);
         return buildRequestProxyWrapper(verifyTransactionPostResponseBody, "POST");

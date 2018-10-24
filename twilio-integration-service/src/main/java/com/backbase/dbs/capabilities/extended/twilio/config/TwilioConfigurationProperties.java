@@ -7,21 +7,11 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "integration.twilio")
 public class TwilioConfigurationProperties {
 
-    private boolean enabled;
-
     private String accountSid;
 
     private String authToken;
 
     private String fromNumber;
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 
     public String getAccountSid() {
         return accountSid;
