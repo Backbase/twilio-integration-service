@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "One Time Password Response",
+  "type": "object",
+  "properties": {
+    "transactionID": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "transactionID",
+    "otp"
+  ]
+}

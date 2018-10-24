@@ -1,0 +1,17 @@
+spring:
+  activemq:
+    broker-url: ${activemq.url:vm://localhost}
+    in-memory: true
+    pooled: false
+  h2:
+    console:
+      enabled: true
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 10000
+sso:
+  jwt:
+    internal:
+      signature:
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY

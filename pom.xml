@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.backbase.dbs.capabilities.extended</groupId>
+    <artifactId>messaging-capability</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Backbase :: Digital Banking Services :: Messaging Capability</name>
+    <description>Messaging DBS Capability</description>
+    <url>http://www.backbase.com</url>
+    <organization>
+        <name>Backbase B.V.</name>
+        <url>http://www.backbase.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name></name>
+            <url>https://github.com/Backbase/twilio-integration-service/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/Backbase/twilio-integration-service</connection>
+        <url>https://github.com/Backbase/twilio-integration-service</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>paulocardoso</id>
+            <name>Paulo Cardoso</name>
+            <email>pauloc@backbase.com</email>
+            <organization>Backbase B.V.</organization>
+            <organizationUrl>http://www.backbase.com</organizationUrl>
+            <roles>
+                <role>Software Engineer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <sonar.language>java</sonar.language>
+        <projec.version>1.0.0</projec.version>
+    </properties>
+
+
+    <modules>
+        <module>messaging-presentation-spec</module>
+        <module>messaging-persistence-spec</module>
+        <module>messaging-integration-spec</module>
+        <module>messaging-persistence-service</module>
+        <module>messaging-presentation-service</module>
+        <module>twilio-integration-service</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.backbase.dbs.capabilities.extended</groupId>
+                <artifactId>messaging-presentation-spec</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: messaging-persistence-service
+  jmx:
+    default-domain: ${spring.application.name}
+  activemq:
+    broker-url: ${activemq.url:tcp://localhost:61616}
+    pool:
+      max-connections: 10
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb;Mode=Oracle
+    platform: h2
+    continue-on-error: true
+  jpa:
+    generate-ddl: false
+liquibase:
+  change-log: classpath:/db/changelog/db.changelog-master.yml
+  parameters:
+    data.otp: classpath:/db/changelog/otp.csv
+    data.ext_otp: classpath:/db/changelog/ext_otp.csv
+  enabled: true
+
+# Logging
+logging:
+  level:
+    com.backbase: INFO
+    org.springframework: INFO
+
+server:
+  port: 8882
+
+backbase:
+  communication:
+    logRequests: true
+    logReplies: true
+    logEventEmit: true
+    logEventReceive: true
+  eventsourcing:
+    commands-and-events-storage-enabled: false
+
+# Configure Internal JWT handler
+sso:
+  jwt:
+    internal:
+      signature:
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/messaging_service?useSSL=false
+    platform: mysql
+    username: root
+    password: root
+    continue-on-error: true

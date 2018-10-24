@@ -1,0 +1,29 @@
+#%RAML 1.0
+---
+#===============================================================
+#  References:
+#    - RAML Specification - https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md
+#===============================================================
+title: Messaging Integration
+uses: 
+  traits: lib/traits/traits.raml
+version: v1
+baseUri: "/{version}"
+mediaType:  application/json
+protocols: [ HTTP, HTTPS ]
+types:
+#===============================================================
+# API resource definitions
+#===============================================================
+/sms:
+  displayName: SendSMS
+  post:
+    is: [traits.BadRequestError, traits.InternalServerError]
+    body:
+      application/json:
+        type: !include schemas/body/sms-request.json
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include schemas/body/sms-request-response.json

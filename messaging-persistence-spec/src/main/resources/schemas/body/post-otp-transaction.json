@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Post Transaction Request",
+  "type": "object",
+  "properties": {
+    "userID": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "userID",
+    "phoneNumber",
+    "transactionType",
+    "transactionValue",
+    "otp"
+  ]
+}
