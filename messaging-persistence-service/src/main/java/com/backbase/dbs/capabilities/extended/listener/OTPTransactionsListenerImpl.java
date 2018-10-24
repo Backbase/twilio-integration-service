@@ -43,8 +43,6 @@ public class OTPTransactionsListenerImpl implements OTPTransactionsListener {
         OTP oneTimePasswordRequest = messagingPersistenceServiceImpl.fetchOneTimePasswordRequest(transactionId);
         TransactionGetResponseBody transactionGetResponseBody = new TransactionGetResponseBody()
                 .withTransactionId(oneTimePasswordRequest.getId())
-                .withTransactionType(oneTimePasswordRequest.getTransactionType())
-                .withTransactionValue(oneTimePasswordRequest.getTransactionValue())
                 .withOtp(oneTimePasswordRequest.getOtp())
                 .withPhoneNumber(oneTimePasswordRequest.getPhoneNumber())
                 .withUserId(oneTimePasswordRequest.getUserId())
