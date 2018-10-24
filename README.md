@@ -42,6 +42,9 @@ Installation
  - JDK 8 or higher
  - Apache ActiveMQ
  - Apache Maven
+ 
+ > Check community for more details: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_developer_environment
+
 
 ### Configure
 
@@ -121,6 +124,8 @@ the binaries can run in web containers such as:
    - Apache Tomcat 8 (Tested)
    - IBM Liberty Profile (Not Tested yet)
    - Wildfly
+
+> for More details of how to run a custom service: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_custom_services
 
 Next Steps
 ==========
