@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <contextName>messaging-presentation-service</contextName>
-    <include resource="com/backbase/buildingblocks/logging/base.xml"/>
-</configuration>
