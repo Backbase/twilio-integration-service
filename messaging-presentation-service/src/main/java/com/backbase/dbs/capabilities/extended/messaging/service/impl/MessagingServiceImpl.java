@@ -4,8 +4,11 @@ import com.backbase.buildingblocks.backend.communication.event.proxy.RequestProx
 import com.backbase.buildingblocks.backend.internalrequest.InternalRequest;
 import com.backbase.buildingblocks.logging.api.Logger;
 import com.backbase.buildingblocks.logging.api.LoggerFactory;
+import com.backbase.buildingblocks.presentation.errors.InternalServerErrorException;
 import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordPostRequestBody;
 import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordPostResponseBody;
+import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordVerifyPostRequestBody;
+import com.backbase.com.backbase.dbs.capabilities.extended.messaging.presentation.rest.spec.v1.otp.OneTimePasswordVerifyPostResponseBody;
 import com.backbase.dbs.capabilities.extended.messaging.routes.MessaginConstants;
 import com.backbase.dbs.capabilities.extended.messaging.service.MessagingService;
 import com.backbase.dbs.capabilities.extended.messaging.service.OneTimePasswordStrategyService;
@@ -14,8 +17,7 @@ import com.backbase.messaging.integration.listener.client.v1.sms.MessagingIntegr
 import com.backbase.messaging.integration.rest.spec.v1.sms.SendSMSPostRequestBody;
 import com.backbase.messaging.integration.rest.spec.v1.sms.SendSMSPostResponseBody;
 import com.backbase.persistence.messaging.listener.client.v1.transactions.PersistenceMessagingOTPTransactionsClient;
-import com.backbase.persistence.messaging.rest.spec.v1.transactions.OTPTransactionsPostRequestBody;
-import com.backbase.persistence.messaging.rest.spec.v1.transactions.OTPTransactionsPostResponseBody;
+import com.backbase.persistence.messaging.rest.spec.v1.transactions.*;
 import org.apache.camel.Consume;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -54,11 +56,45 @@ public class MessagingServiceImpl implements MessagingService {
         int otp = oneTimePasswordStrategyService.generateOpt();
         String transactionID = persistNewRequest(internalRequest, otp);
 
-        RequestProxyWrapper<SendSMSPostResponseBody> otpRequestPostResponseBody = callIntegrationServiceToSendSms(internalRequest, "otp");
+        RequestProxyWrapper<SendSMSPostResponseBody> otpRequestPostResponseBody = callIntegrationServiceToSendSms(internalRequest, String.valueOf(otp));
         Boolean smsSent = otpRequestPostResponseBody.getRequest().getData().getSmsSent();
         LOGGER.info("Successfully requested new OTP {} with Transaction ID: {}", otp, transactionID);
         return new OneTimePasswordPostResponseBody().withTransactionID(transactionID).withOtp(otp)
                 .withSmsSent(smsSent);
+    }
+
+    @Override
+    @Consume(uri = MessaginConstants.DIRECT_BUSINESS_VERIFY_OTP)
+    public OneTimePasswordVerifyPostResponseBody verifyOneTimePassword(InternalRequest<OneTimePasswordVerifyPostRequestBody> internalRequest) {
+        LOGGER.info("Verifying OTP : {}", internalRequest);
+
+        final OneTimePasswordVerifyPostRequestBody otpRequest = internalRequest.getData();
+
+        final RequestProxyWrapper<TransactionGetResponseBody> response = persistenceOtpOTPTransactionsClient
+                .getTransaction(new InternalRequest<>(null, internalRequest.getInternalRequestContext()), otpRequest.getTransactionID());
+
+        final TransactionGetResponseBody otpDataResponse = response.getRequest().getData();
+
+        if(otpDataResponse.getVerified()){
+            LOGGER.info("OTP for this transaction was already verified");
+            throw new InternalServerErrorException().withMessage("OTP is not valid");
+        }
+
+        if(!otpDataResponse.getOtp().equals(otpRequest.getOtp())) {
+            LOGGER.info("OTP is not matching");
+            throw new InternalServerErrorException().withMessage("OTP does not Match");
+        }
+
+        VerifyTransactionPostRequestBody verifyRequest = new VerifyTransactionPostRequestBody();
+        verifyRequest.setTransactionID(otpRequest.getTransactionID());
+        verifyRequest.setVerified(true);
+
+        final RequestProxyWrapper<VerifyTransactionPostResponseBody> UpdateResponse = persistenceOtpOTPTransactionsClient.postVerifyTransaction(new InternalRequest<>(verifyRequest, internalRequest.getInternalRequestContext()));
+
+
+        return new OneTimePasswordVerifyPostResponseBody()
+                .withTransactionID(UpdateResponse.getRequest().getData().getTransactionID())
+                .withVerified(true);
     }
 
     private RequestProxyWrapper<SendSMSPostResponseBody> callIntegrationServiceToSendSms(
@@ -79,6 +115,7 @@ public class MessagingServiceImpl implements MessagingService {
                 .postOTPTransactions(ContextUtil.copyInternalRequest(internalRequest, transactionPostRequestBody));
         return transactionPostResponseBody.getRequest().getData().getTransactionID();
     }
+
 
 
 }

@@ -19,8 +19,8 @@ spring:
 liquibase:
   change-log: classpath:/db/changelog/db.changelog-master.yml
   parameters:
-    data.messaging: classpath:/db/changelog/messaging.csv
-    data.ext_messaging: classpath:/db/changelog/ext_messaging.csv
+    data.otp: classpath:/db/changelog/otp.csv
+    data.ext_otp: classpath:/db/changelog/ext_otp.csv
   enabled: true
 
 # Logging

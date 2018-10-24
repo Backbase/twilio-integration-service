@@ -4,12 +4,12 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - createTable:
-        tableName: ext_messaging
+        tableName: ext_otp
         columns:
         - column:
             constraints:
               nullable: false
-            name: ext_messaging_id
+            name: ext_otp_id
             type: VARCHAR(255)
         - column:
             name: property_value
@@ -24,7 +24,7 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - createTable:
-        tableName: messaging
+        tableName: otp
         columns:
         - column:
             constraints:
@@ -38,13 +38,7 @@ databaseChangeLog:
             name: phone_number
             type: VARCHAR(255)
         - column:
-            name: transaction_type
-            type: TINYINT(2)
-        - column:
-            name: transaction_value
-            type: INT(30)
-        - column:
-            name: messaging
+            name: otp
             type: INT(5)
         - column:
             name: verified
@@ -54,38 +48,38 @@ databaseChangeLog:
     author: Paulo Cardoso
     changes:
     - addPrimaryKey:
-        columnNames: ext_messaging_id, property_key
-        constraintName: pk_ext_messaging
-        tableName: ext_messaging
+        columnNames: ext_otp_id, property_key
+        constraintName: pk_ext_otp
+        tableName: ext_otp
 - changeSet:
-    id: pk_key_messaging
+    id: pk_key_otp
     author: Paulo Cardoso
     changes:
     - addPrimaryKey:
         columnNames: id
-        constraintName: pk_messaging
-        tableName: messaging
+        constraintName: pk_otp
+        tableName: otp
 - changeSet:
-    id: add_fk_messaging_ext
+    id: add_fk_otp_ext
     author: Paulo Cardoso
     changes:
     - addForeignKeyConstraint:
-        baseColumnNames: ext_messaging_id
-        baseTableName: ext_messaging
-        constraintName: fk_messaging_ext
+        baseColumnNames: ext_otp_id
+        baseTableName: ext_otp
+        constraintName: fk_otp_ext
         deferrable: false
         initiallyDeferred: false
         onDelete: NO ACTION
         onUpdate: NO ACTION
         referencedColumnNames: id
-        referencedTableName: messaging
+        referencedTableName: otp
 - changeSet:
     author: Paulo Cardoso
-    id: data_messaging
+    id: data_otp
     changes:
       loadData: 
-        file: ${data.messaging}
-        tableName: messaging
+        file: ${data.otp}
+        tableName: otp
         columns:
         - column:
           name: id
@@ -94,23 +88,19 @@ databaseChangeLog:
         - column:
           name: phone_number
         - column:
-          name: transaction_type
-        - column:
-          name: transaction_value
-        - column:
-          name: messaging
+          name: otp
         - column:
           name: verified
 - changeSet:
     author: Paulo Cardoso
-    id: data_ext_messaging
+    id: data_ext_otp
     changes:
       loadData: 
-        file: ${data.ext_messaging}
-        tableName: ext_messaging
+        file: ${data.ext_otp}
+        tableName: ext_otp
         columns:
           - column:
-              name: ext_messaging_id
+              name: ext_otp_id
           - column:
               name: property_value
           - column:

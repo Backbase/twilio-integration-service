@@ -8,6 +8,7 @@ import com.backbase.persistence.messaging.rest.spec.v1.transactions.VerifyTransa
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class MessagingPersistenceServiceImpl implements MessagingPersistenceService {
@@ -35,17 +36,19 @@ public class MessagingPersistenceServiceImpl implements MessagingPersistenceServ
     }
 
     @Override
+    @Transactional
     public String updateOneTimePasswordRequestVerificationStatus(VerifyTransactionPostRequestBody verifyTransactionPostRequestBody) {
         String transactionID = verifyTransactionPostRequestBody.getTransactionID();
         OTP oneTimePasswordRequest = otpRepository.findOne(transactionID);
         oneTimePasswordRequest.setVerified(verifyTransactionPostRequestBody.getVerified());
-        otpRepository.save(oneTimePasswordRequest);
         return transactionID;
     }
 
     private OTP mapRequestToModel(OTPTransactionsPostRequestBody transactionPostRequestBody) {
         OTP oneTimePasswordRequest = new OTP();
-        modelMapper.map(transactionPostRequestBody, oneTimePasswordRequest);
+        oneTimePasswordRequest.setOtp(transactionPostRequestBody.getOtp());
+        oneTimePasswordRequest.setPhoneNumber(transactionPostRequestBody.getPhoneNumber());
+        oneTimePasswordRequest.setUserId(transactionPostRequestBody.getUserID());
         oneTimePasswordRequest.setVerified(false);
         return oneTimePasswordRequest;
     }

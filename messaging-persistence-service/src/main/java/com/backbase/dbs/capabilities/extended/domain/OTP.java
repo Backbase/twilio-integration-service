@@ -8,19 +8,16 @@ import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * An example entity implementing {@link com.backbase.buildingblocks.persistence.model.AdditionalPropertiesAware} for API extensions and an analyzed field 'name' for Hibernate Search.
- * Keep identifiers below 30 characters for use with older Oracle Database versions, or 128 bytes if using Oracle 12c Release 2 and later.
- */
+
 @Entity
-@Table(name = "messaging")
+@Table(name = "otp")
 public class OTP implements AdditionalPropertiesAware, Persistable<String> {
     @Id
     @GeneratedValue(
-            generator = "messaging-generator"
+            generator = "otp-generator"
     )
     @GenericGenerator(
-            name = "messaging-generator",
+            name = "otp-generator",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "id", unique = true)
@@ -32,13 +29,7 @@ public class OTP implements AdditionalPropertiesAware, Persistable<String> {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "transaction_type")
-    private String transactionType;
-
-    @Column(name = "transaction_value")
-    private Integer transactionValue;
-
-    @Column(name = "messaging")
+    @Column(name = "otp")
     private Integer otp;
 
     @Column(name = "verified")
@@ -78,22 +69,6 @@ public class OTP implements AdditionalPropertiesAware, Persistable<String> {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public Integer getTransactionValue() {
-        return transactionValue;
-    }
-
-    public void setTransactionValue(Integer transactionValue) {
-        this.transactionValue = transactionValue;
     }
 
     public Integer getOtp() {
