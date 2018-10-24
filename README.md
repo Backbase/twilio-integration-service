@@ -22,13 +22,13 @@ Exposes a REST resource with the following actions for messaging
  - Oracle
  - MySQL
  
-> Check configuration TOPIC for more details
+> Check the **Configuration** section for more details
  
 #### Twilio Integration Service
 
 Component that makes the actual integration with Twilio API.
  
-> Check configuration TOPIC for more details
+> Check the **Configuration** section for more details
 
 #### Components overview
 
@@ -45,10 +45,12 @@ Installation
  
  > Check community for more details: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_developer_environment
 
+ > for more details of how to run a custom service: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_custom_services
+
 
 ### Configure
 
-The following properties have to be set, and obtained from your Twilio account.
+The following properties have to be set and obtained from your Twilio account.
 
 ```yaml
 integration:
@@ -61,26 +63,26 @@ integration:
 These properties can be set as environment properties.
 
 ```bash
-java jar -Dintegration.twilio.accountSid=123as \
-    -Dintegration.twilio.authToken=13123 \
-    -Dintegration.twilio.fromNumber=+319830890 \ 
+java jar -Dintegration.twilio.accountSid=**** \
+    -Dintegration.twilio.authToken=**** \
+    -Dintegration.twilio.fromNumber=**** \ 
     twilio-integration-service-1.0.0-boot.war
 ```
 
-By default the service comes with h2 predefined, in case you want to replace for another database you can follow the steps below:
-   - add the dependency to the `pom.xml`:
-    
-    ```
-     <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>1.4.197</version>
-    </dependency>
-    ```
+By default the service comes with h2 predefined, in case you want to replace it with another database you can by replacing the following sections:
 
-   - Update the database properties:
+- Add the dependency to the `pom.xml`:
+    
+```xml
+  <dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.197</version>
+</dependency>
+```
+
    
-```bash
+```yaml
 spring:
   profiles: mysql
   datasource:
@@ -91,19 +93,20 @@ spring:
     continue-on-error: true
 ```
  
-
-
 ### Build
+
+Build all the artifacts and install it by running the following command
 
 ```bash 
    mvn clean install
 ```
- > This command is going to build all the artifacts and install locally (war and war-boot files).
 
 Getting Started
 ============
 
 ### Required Environment Properties
+
+Set the following properties (some properties can be updated in `src/main/resources/application.yml`):
 
   - EXTERNAL_ENC_SECRET_KEY: Key for encrypting the external token (The secret length must be at least 256 bits)
   - EXTERNAL_SIG_SECRET_KEY: Key for signing the external token (The secret length must be at least 256 bits)
@@ -112,20 +115,24 @@ Getting Started
   - SPRING_ACTIVEMQ_USER: user of apache MQ
   - SPRING_ACTIVEMQ_PASSWORD: password of apache MQ
 
-> some properties can be updated inside of src/main/resources/application.yml
-
 To run the service in development mode, use:
-- mvn spring-boot:run
+
+```bash
+mvn spring-boot:run
+```
 
 To run the service from the built binaries, use:
-- java -jar target/twilio-integration-service-1.0.0-SNAPSHOT-boot.war
 
-the binaries can run in web containers such as:
+```bash
+java -jar target/twilio-integration-service-1.0.0-SNAPSHOT-boot.war
+```
+
+The binaries can run in web containers such as:
    - Apache Tomcat 8 (Tested)
-   - IBM Liberty Profile (Not Tested yet)
+   - IBM Liberty Profile (Not Tested)
    - Wildfly
 
-> for More details of how to run a custom service: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_custom_services
+
 
 Next Steps
 ==========
