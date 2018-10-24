@@ -2,28 +2,16 @@
 
 This service enables you to setup a Twilio integration service to:
  
-- Send an OTP
-- Verify an OTP
 - Send an SMS
 
 ## Components
 
-#### Messaging Presentation Service
-Exposes a REST resource with the following actions for messaging
+#### Twilio Integration Specfication
 
-- Sending an OTP
-- Verifing an OTP
-- Sending an SMS
-    
-#### Messaging Persistence Service
- Persists the OTP status. Based on Spring JPA, it can be used  
- with the following supported databases:
- 
- - Oracle
- - MySQL
- 
-> Check the **Configuration** section for more details
- 
+Module contains a RAML file that contains the definition of the contracts that is going
+to be exposed.
+
+
 #### Twilio Integration Service
 
 Component that makes the actual integration with Twilio API.
@@ -32,7 +20,7 @@ Component that makes the actual integration with Twilio API.
 
 #### Components overview
 
-![Image of Yaktocat](docs/img/messaging-diagram.png)
+![Component Overview](docs/img/messaging-diagram.png)
 
 Installation
 ============
@@ -63,36 +51,13 @@ integration:
 These properties can be set as environment properties.
 
 ```bash
-java jar -Dintegration.twilio.accountSid=**** \
+java jar -DSIG_SECRET_KEY=**** \ 
+    -Dintegration.twilio.accountSid=**** \
     -Dintegration.twilio.authToken=**** \
     -Dintegration.twilio.fromNumber=**** \ 
     twilio-integration-service-1.0.0-boot.war
 ```
 
-By default the service comes with h2 predefined, in case you want to replace it with another database you can by replacing the following sections:
-
-- Add the dependency to the `pom.xml`:
-    
-```xml
-  <dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <version>1.4.197</version>
-</dependency>
-```
-
-   
-```yaml
-spring:
-  profiles: mysql
-  datasource:
-    url: jdbc:mysql://localhost:3306/messaging_service?useSSL=false
-    platform: mysql
-    username: root
-    password: root
-    continue-on-error: true
-```
- 
 ### Build
 
 Build all the artifacts and install it by running the following command
@@ -108,8 +73,6 @@ Getting Started
 
 Set the following properties (some properties can be updated in `src/main/resources/application.yml`):
 
-  - EXTERNAL_ENC_SECRET_KEY: Key for encrypting the external token (The secret length must be at least 256 bits)
-  - EXTERNAL_SIG_SECRET_KEY: Key for signing the external token (The secret length must be at least 256 bits)
   - SIG_SECRET_KEY: Key for signing internal token (The secret length must be at least 256 bits)
   - SPRING_ACTIVEMQ_BROKER_URL: url of the apache MQ
   - SPRING_ACTIVEMQ_USER: user of apache MQ
@@ -124,7 +87,11 @@ mvn spring-boot:run
 To run the service from the built binaries, use:
 
 ```bash
-java -jar target/twilio-integration-service-1.0.0-SNAPSHOT-boot.war
+java jar -DSIG_SECRET_KEY=**** \ 
+    -Dintegration.twilio.accountSid=**** \
+    -Dintegration.twilio.authToken=**** \
+    -Dintegration.twilio.fromNumber=**** \ 
+    twilio-integration-service-1.0.0-boot.war
 ```
 
 The binaries can run in web containers such as:

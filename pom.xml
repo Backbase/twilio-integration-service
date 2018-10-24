@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.backbase.dbs.capabilities.extended</groupId>
-    <artifactId>messaging-capability</artifactId>
+    <artifactId>twilio-integration-service-pom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Backbase :: Digital Banking Services :: Messaging Capability</name>
-    <description>Messaging DBS Capability</description>
+    <name>Backbase :: Digital Banking Services :: Twilio Integration POM</name>
+    <description>Twilio Integration Service</description>
     <url>http://www.backbase.com</url>
     <organization>
         <name>Backbase B.V.</name>
@@ -46,23 +46,9 @@
 
 
     <modules>
-        <module>messaging-presentation-spec</module>
-        <module>messaging-persistence-spec</module>
-        <module>messaging-integration-spec</module>
-        <module>messaging-persistence-service</module>
-        <module>messaging-presentation-service</module>
+        <module>twilio-integration-spec</module>
         <module>twilio-integration-service</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.backbase.dbs.capabilities.extended</groupId>
-                <artifactId>messaging-presentation-spec</artifactId>
-                <version>1.0.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
 
 </project>
