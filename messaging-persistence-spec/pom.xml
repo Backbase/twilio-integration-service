@@ -12,7 +12,33 @@
     <artifactId>messaging-persistence-spec</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>Backbase :: Digital Banking Services :: Messaging Persistence Specification</name>
-
+    <url>http://www.backbase.com</url>
+    <organization>
+        <name>Backbase B.V.</name>
+        <url>http://www.backbase.com</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Copyright (c) 2018 Backbase B.V.</name>
+            <url>https://github.com/Backbase/twilio-integration-service/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>paulocardoso</id>
+            <name>Paulo Cardoso</name>
+            <email>pauloc@backbase.com</email>
+            <organization>Backbase B.V.</organization>
+            <organizationUrl>http://www.backbase.com</organizationUrl>
+            <roles>
+                <role>Software Engineer</role>
+            </roles>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/Backbase/twilio-integration-service</connection>
+        <url>https://github.com/Backbase/twilio-integration-service</url>
+    </scm>
     <properties>
         <codegen.serviceName>persistence.messaging</codegen.serviceName>
     </properties>

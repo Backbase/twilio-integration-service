@@ -20,13 +20,13 @@
     </organization>
     <licenses>
         <license>
-            <name></name>
-            <url></url>
+            <name>Copyright (c) 2018 Backbase B.V.</name>
+            <url>https://github.com/Backbase/twilio-integration-service/blob/master/LICENSE</url>
         </license>
     </licenses>
     <developers>
         <developer>
-            <id>p4uloc4rdoso</id>
+            <id>paulocardoso</id>
             <name>Paulo Cardoso</name>
             <email>pauloc@backbase.com</email>
             <organization>Backbase B.V.</organization>

@@ -7,7 +7,7 @@
     <artifactId>messaging-capability</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Messaging Capability</name>
+    <name>Backbase :: Digital Banking Services :: Messaging Capability</name>
     <description>Messaging DBS Capability</description>
     <url>http://www.backbase.com</url>
     <organization>
@@ -17,7 +17,7 @@
     <licenses>
         <license>
             <name></name>
-            <url></url>
+            <url>https://github.com/Backbase/twilio-integration-service/blob/master/LICENSE</url>
         </license>
     </licenses>
     <scm>
@@ -26,7 +26,7 @@
     </scm>
     <developers>
         <developer>
-            <id>p4uloc4rdoso</id>
+            <id>paulocardoso</id>
             <name>Paulo Cardoso</name>
             <email>pauloc@backbase.com</email>
             <organization>Backbase B.V.</organization>
