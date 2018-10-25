@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "SMS Request Response",
+  "type": "object",
+  "properties": {
+    "phoneNumber": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "phoneNumber",
+    "message"
+  ]
+}
