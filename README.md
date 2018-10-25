@@ -132,7 +132,26 @@ The binaries can run in web containers such as:
    - IBM Liberty Profile (Not Tested)
    - Wildfly
 
+Service Extension
+=================
 
+```$xslt
+mvn archetype:generate -DarchetypeArtifactId=service-extension-archetype \
+  -DarchetypeGroupId=com.backbase.archetype \
+  -DarchetypeVersion=5.12.0 \
+  -DgroupId=com.backbase.dbs.capabilities.extended \
+  -DartifactId=twilio-integration-service-extension \
+  -DserviceArtifactId=twilio-integration-service \
+  -DserviceVersion=1.0.0-SNAPSHOT \
+  -DrouteBuilderToExtend=com.backbase.dbs.capabilities.extended.twilio.routes.SMSRoute
+``` 
+
+```bash
+java jar -Dintegration.twilio.accountSid=**** \
+    -Dintegration.twilio.authToken=**** \
+    -Dintegration.twilio.fromNumber=**** \ 
+    twilio-integration-service-1.0.0-boot.war
+```
 
 Next Steps
 ==========
