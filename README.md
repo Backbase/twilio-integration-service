@@ -1,7 +1,7 @@
 # Twilio Integration Service demo for Backbase DBS Service
 
 This service enables you to setup a Twilio integration service to:
- 
+
 - Send an SMS
 
 ## Components
@@ -15,7 +15,7 @@ to be exposed.
 #### Twilio Integration Service
 
 Component that makes the actual integration with Twilio API.
- 
+
 > Check the **Configuration** section for more details
 
 #### Components overview
@@ -30,7 +30,7 @@ Installation
  - JDK 1.8 (PSU >= 131 if using Docker)
  - Apache ActiveMQ 5.14
  - Apache Maven
- 
+
  > Check community for more details: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_developer_environment
 
  > for more details of how to run a custom service: https://community.backbase.com/documentation/ServiceSDK/latest/deploy_custom_services
@@ -43,18 +43,18 @@ The following properties have to be set and obtained from your Twilio account.
 ```yaml
 integration:
   twilio:
-    accountSid: 
-    authToken: 
-    fromNumber: 
+    accountSid:
+    authToken:
+    fromNumber:
 ```
 
 These properties can be set as environment properties.
 
 ```bash
-java jar -DSIG_SECRET_KEY=**** \ 
+java jar -DSIG_SECRET_KEY=**** \
     -Dintegration.twilio.accountSid=**** \
     -Dintegration.twilio.authToken=**** \
-    -Dintegration.twilio.fromNumber=**** \ 
+    -Dintegration.twilio.fromNumber=**** \
     twilio-integration-service-1.0.0-boot.war
 ```
 
@@ -62,13 +62,12 @@ java jar -DSIG_SECRET_KEY=**** \
 
 Build all the artifacts and install it by running the following command
 
-```bash 
+```bash
    mvn clean install
 ```
 
 Getting Started
 ============
-
 ### Required Environment Properties
 
 Set the following properties (some properties can be updated in `src/main/resources/application.yml`):
@@ -87,10 +86,10 @@ mvn spring-boot:run
 To run the service from the built binaries, use:
 
 ```bash
-java jar -DSIG_SECRET_KEY=**** \ 
+java jar -DSIG_SECRET_KEY=**** \
     -Dintegration.twilio.accountSid=**** \
     -Dintegration.twilio.authToken=**** \
-    -Dintegration.twilio.fromNumber=**** \ 
+    -Dintegration.twilio.fromNumber=**** \
     twilio-integration-service-1.0.0-boot.war
 ```
 

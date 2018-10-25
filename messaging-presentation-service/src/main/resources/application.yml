@@ -1,0 +1,56 @@
+server:
+  port: 9929
+  contextPath: /messaging-presentation-service
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.backbase: INFO
+    org.springframework: INFO
+
+eureka:
+  instance:
+    appname: ${spring.application.name}
+    healthCheckUrlPath: /production-support/health
+    statusPageUrlPath: /production-support/info
+    nonSecurePort: ${server.port}
+    metadata-map:
+      public: true
+      role: live
+  client:
+    serviceUrl:
+      defaultZone: http://${REGISTRY_HOST:localhost}:${REGISTRY_PORT:8080}/registry/eureka/
+
+spring:
+  activemq:
+    broker-url: ${activemq.url:tcp://localhost:61616}
+  jmx:
+    default-domain: ${spring.application.name}
+  jta:
+    logDir: target/${spring.application.name}-logs
+
+idempotencyConfiguration:
+  cacheName: ${spring.application.name}Cache
+
+backbase:
+  communication:
+    logRequests: true
+    logReplies: true
+  eventsourcing:
+    commands-and-events-storage-enabled: false
+  persistence:
+    enabled: false
+  web:
+    security:
+      enabled: true
+
+sso:
+  jwt:
+    internal:
+      type: signed
+      signature:
+        algorithm: HS256
+        key:
+          type: ENV
+          value: SIG_SECRET_KEY
