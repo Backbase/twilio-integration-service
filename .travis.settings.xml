@@ -1,0 +1,85 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <profiles>
+        <profile>
+            <id>backbase</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>Backbase Artifact Repository</id>
+                    <url>https://repo.backbase.com/repo/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>Backbase Artifact Repository</id>
+                    <url>https://repo.backbase.com/repo/</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <properties>
+                <downloadSources>true</downloadSources>
+                <downloadJavadocs>true</downloadJavadocs>
+            </properties>
+        </profile>
+        <profile>
+            <id>backbase-snapshot</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>Backbase Repo</id>
+                    <url>https://repo.backbase.com/repo/</url>
+                </repository>
+                <repository>
+                    <id>Backbase Artifacts</id>
+                    <url>https://artifacts.backbase.com/repo</url>
+                </repository>
+                <repository>
+                    <id>Backbase Dev Snapshots</id>
+                    <url>https://artifacts.backbase.com/backbase-development-snapshots</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>Backbase Repo</id>
+                    <url>https://repo.backbase.com/repo/</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>Backbase Artifacts</id>
+                    <url>https://artifacts.backbase.com/repo</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>Backbase Dev Snapshots</id>
+                    <url>https://artifacts.backbase.com/backbase-development-snapshots</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <servers>
+        <server>
+            <id>Backbase Artifact Repository</id>
+            <username>${env.BB_USER}</username>
+            <password>${env.BB_BACKBASE}</password>
+        </server>
+        <server>
+            <id>Backbase Artifacts</id>
+            <username>${env.BB_USER}</username>
+            <password>${env.BB_BACKBASE}</password>
+        </server>
+        <server>
+            <id>Backbase Repo</id>
+            <username>${env.BB_USER}</username>
+            <password>${env.BB_BACKBASE}</password>
+        </server>
+        <server>
+            <id>Backbase Dev Snapshots</id>
+            <username>${env.BB_USER}</username>
+            <password>${env.BB_BACKBASE}</password>
+        </server>
+    </servers>
+</settings>
