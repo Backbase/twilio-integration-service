@@ -1,5 +1,7 @@
 # Twilio Integration Service demo for Backbase DBS Service
 
+[![Build Status](https://travis-ci.org/Backbase/twilio-integration-service.svg?branch=master)](https://travis-ci.org/Backbase/twilio-integration-service)
+
 This service enables you to setup a Twilio integration service to:
 
 - Send an SMS
