@@ -1,5 +1,5 @@
 language: java
 install:
-  - mvn -s .travis.maven.settings.xml -version -B
+  - mvn -s .travis.settings.xml -version -B
 script:
-  - mvn -s .travis.maven.settings.xml clean install
+  - mvn -s .travis.settings.xml clean install
